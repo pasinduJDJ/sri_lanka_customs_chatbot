@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<style>
+    body, html {
+      height: 100%;
+    }
+
+    .messages-box {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .messages-list {
+      padding-left: 0;
+    }
+
+
+    .message {
+      margin-bottom: 15px;
+      list-style: none;
+    }
+
+    .message-text {
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sent {
+      background-color: #0C0A40;
+      align-self: flex-end;
+    }
+
+    .received {
+      background-color: #EEEEEE;
+      align-self: flex-start;
+    }
+
+    .message-form {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: #f8f9fa;
+    }
+
+    .message-input {
+      flex: 1;
+      border-radius: 0;
+      border-right: none;
+    }
+
+    .btn-send {
+      border-radius: 0;
+    }
+
+    .chat-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column; 
+    }
+  </style>
+{% endblock %}
+
+
+{% block content %}
+<div class="chat-container">
+  <div class="card flex-grow-1">
+    <div class="card-header bg-white text-black text-center py-3" style="font-weight: bolder; font-size: larger;">Sri Lank Customs</div>
+    <div class="card-body messages-box">
+      
+      <ul class="list-unstyled messages-list d-flex justify-content-center align-items-center">
+        
+       <div class="col-12 col-md-6 col-lg-4 d-flex  p-2">
+        <li class="message received " style="border-radius: 20px;">
+          <div class="message-text">
+            <div class="message-sender">
+              <b>AI Chatbot</b>
+            </div>
+            <div class="message-content">
+              Hi, I am your AI Chatbot, you can ask me anything.
+            </div>
+          </div>
+        </li>
+       </div>
+      </ul>
+      
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+  </div>
+  <form class="message-form">
+    {%csrf_token%}
+    <div class="col d-flex justify-content-center align-items-center">
+      <div class="input-group col-12 col-md-10 col-lg-7 d-flex py-2">
+        <input type="text" class="form-control message-input py-2" placeholder="Write your message .." style="border-radius: 20px;" >
+        <div class="input-group-append mx-3">
+          <button type="submit" class="btn btn-send px-4 text-white" style="border-radius: 20px; background-color: #0C0A40;">Send</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}
